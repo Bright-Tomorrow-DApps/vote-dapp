@@ -1,5 +1,9 @@
-import styled from 'styled-components'
+import React, { forwardRef } from 'react'
 
-const Flex = styled.div({})
+import { BasicFlex } from './styled'
 
-export default Flex
+const Flex = ({ display = 'flex', ...restProps }, ref) => {
+  return <BasicFlex ref={ref} display={display} {...restProps} />
+}
+
+export default forwardRef(Flex)

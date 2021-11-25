@@ -1,3 +1,4 @@
 import Flex from './Flex'
+import { BasicFlex } from './styled'
 
-export default Flex
+export { Flex as default, BasicFlex }

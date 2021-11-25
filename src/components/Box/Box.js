@@ -1,5 +1,9 @@
-import styled from 'styled-components'
+import React, { forwardRef } from 'react'
 
-const Box = styled.div({})
+import { BasicBox } from './styled'
 
-export default Box
+const Box = ({ display = 'block', ...restProps }, ref) => {
+  return <BasicBox ref={ref} display={display} {...restProps} />
+}
+
+export default forwardRef(Box)
