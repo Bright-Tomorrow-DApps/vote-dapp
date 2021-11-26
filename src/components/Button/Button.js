@@ -1,5 +1,14 @@
-import styled from 'styled-components'
+import React, { forwardRef } from 'react'
 
-const Button = styled.button({})
+import { BasicButton } from './styled'
 
-export default Button
+const Button = ({ disabled, children, loading, loadingIcon, onClick, ...restProps }, ref) => {
+  return (
+    <BasicButton disabled={disabled} ref={ref} onClick={onClick} {...restProps}>
+      {loading && loadingIcon}
+      {children}
+    </BasicButton>
+  )
+}
+
+export default forwardRef(Button)

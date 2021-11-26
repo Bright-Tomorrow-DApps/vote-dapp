@@ -1,10 +1,10 @@
 import './App.css'
 
-import { Footer, Sidebar, Card, Flex, Box } from 'components'
+import { Flex, Sidebar } from 'components'
 
 function App() {
   return (
-    <Box height="100%" bg="rgb(45, 11, 90)">
+    <Flex minHeight="100vh" flexDirection="column" bg="rgb(45, 11, 90)">
       <Flex
         as="header"
         color="white"
@@ -18,9 +18,7 @@ function App() {
       </Flex>
 
       <Flex>
-        <Flex width="25%" minHeight="500px" bg="pink">
-          Sidebar
-        </Flex>
+        <Sidebar />
         <Flex width="75%" flexDirection="column" justifyContent="space-between">
           <Flex bg="green">Card</Flex>
           <Flex bg="blue">Card</Flex>
@@ -31,6 +29,10 @@ function App() {
 
       <Flex
         as="footer"
+        position="fixed"
+        left="0"
+        bottom="0"
+        width="100%"
         color="white"
         justifyContent="center"
         alignItems="center"
@@ -39,7 +41,7 @@ function App() {
       >
         Footer
       </Flex>
-    </Box>
+    </Flex>
   )
 }
 
