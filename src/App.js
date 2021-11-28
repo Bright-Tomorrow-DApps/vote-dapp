@@ -5,10 +5,17 @@ import Logo from './logo.svg'
 
 function App() {
   const cardItems = [
-    { topic: 'Kevin週一上午請假?', isFinished: false, isYesWin: null },
-    { topic: '下週會不會有人訂可不可?', isFinished: false, isYesWin: null },
-    { topic: '週五下雨?', isFinished: true, isYesWin: true },
+    { id: 1, topic: 'Kevin週一上午請假?', isFinished: false, isYesWin: null },
+    { id: 2, topic: '下週會不會有人訂可不可?', isFinished: false, isYesWin: null },
+    { id: 3, topic: '週五下雨?', isFinished: true, isYesWin: true },
   ]
+
+  const handleYesOnClick = (id) => () => {
+    console.log('aaaa', 'yes', id)
+  }
+  const handleNoOnClick = (id) => () => {
+    console.log('aaaa', 'no', id)
+  }
 
   return (
     <Flex minHeight="100vh" flexDirection="column" bg="rgb(45, 11, 90)">
@@ -28,8 +35,15 @@ function App() {
       <Flex>
         <Sidebar />
         <Flex width="80%" flexDirection="column">
-          {cardItems.map(({ topic, isFinished, isYesWin }) => (
-            <Card key={topic} topic={topic} isFinished={isFinished} isYesWin={isYesWin} />
+          {cardItems.map(({ id, topic, isFinished, isYesWin }) => (
+            <Card
+              key={id}
+              topic={topic}
+              isFinished={isFinished}
+              isYesWin={isYesWin}
+              yesOnClick={handleYesOnClick(id)}
+              noOnClick={handleNoOnClick(id)}
+            />
           ))}
         </Flex>
       </Flex>
@@ -43,8 +57,8 @@ function App() {
         color="white"
         justifyContent="center"
         alignItems="center"
-        height="100px"
-        bg="rgb(255, 255, 255, 0.2)"
+        height="50px"
+        bg="rgb(255, 255, 255, 0.1)"
       >
         Footer
       </Flex>

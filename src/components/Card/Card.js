@@ -21,7 +21,7 @@ const YesNoButton = styled.button`
   cursor: pointer;
 `
 
-const Card = ({ topic, isFinished, isYesWin, yesOnClick, noOnClick }) => {
+const Card = ({ id, topic, isFinished, isYesWin, yesOnClick, noOnClick }) => {
   return (
     <CardContainer>
       <Flex width="50%" borderRight="1px solid gray" alignItems="center">
