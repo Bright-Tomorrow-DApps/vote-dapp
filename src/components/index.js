@@ -3,7 +3,6 @@ import Flex from './Flex'
 import Sidebar from './Sidebar'
 import Card from './Card'
 import Button from './Button'
-import Header from './Header'
-import Footer from './Footer'
+import Text from './Text'
 
-export { Box, Flex, Sidebar, Card, Button, Footer, Header }
+export { Box, Flex, Sidebar, Card, Button, Text }

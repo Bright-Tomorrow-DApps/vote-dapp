@@ -1,14 +1,19 @@
-import React, { forwardRef } from 'react'
+import styled from 'styled-components'
 
-import { BasicButton } from './styled'
+const BasicButton = styled.button`
+  /* Adapt the colors based on primary prop */
+  background: ${(props) => (props.primary ? 'palevioletred' : 'white')};
+  color: ${(props) => (props.primary ? 'white' : 'palevioletred')};
 
-const Button = ({ disabled, children, loading, loadingIcon, onClick, ...restProps }, ref) => {
-  return (
-    <BasicButton disabled={disabled} ref={ref} onClick={onClick} {...restProps}>
-      {loading && loadingIcon}
-      {children}
-    </BasicButton>
-  )
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+`
+
+const Button = ({ children, onClick }) => {
+  return <BasicButton onClick={onClick}>{children}</BasicButton>
 }
 
-export default forwardRef(Button)
+export default Button
