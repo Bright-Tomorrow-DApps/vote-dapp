@@ -2,6 +2,7 @@ import './App.css'
 
 import { Flex, Sidebar, Card } from 'components'
 import Logo from './logo.svg'
+import Wallet from './wallet'
 
 function App() {
   const cardItems = [
@@ -25,11 +26,14 @@ function App() {
         justifyContent="space-between"
         alignItems="center"
         height="100px"
+        p="20px"
       >
-        <Flex p="20px">
+        <Flex>
           <img alt="logo" src={Logo} width="250"></img>
         </Flex>
-        <Flex>Connect wallet</Flex>
+        <Flex>
+          <Wallet />
+        </Flex>
       </Flex>
 
       <Flex>
