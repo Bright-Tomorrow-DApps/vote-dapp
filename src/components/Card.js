@@ -1,5 +1,7 @@
 import styled from 'styled-components'
-import { Flex, Text, Box } from 'components'
+import Flex from './Flex'
+import Text from './Text'
+import Box from './Box'
 
 const CardContainer = styled(Flex)`
   min-height: 120px;

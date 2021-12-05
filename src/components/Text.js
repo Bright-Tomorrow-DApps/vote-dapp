@@ -1,3 +1,4 @@
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import {
   border,
@@ -30,3 +31,9 @@ const BasicText = styled.span.withConfig(shouldForwardPropConfig)`
 `
 
 export { BasicText }
+
+const Text = (props, ref) => {
+  return <BasicText ref={ref} {...props} />
+}
+
+export default forwardRef(Text)

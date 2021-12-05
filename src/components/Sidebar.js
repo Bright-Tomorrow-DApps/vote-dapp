@@ -1,4 +1,4 @@
-import { Flex } from 'components'
+import Flex from './Flex'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faVoteYea, faUser, faMoneyCheck, faGem } from '@fortawesome/free-solid-svg-icons'

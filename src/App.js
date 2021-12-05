@@ -7,11 +7,13 @@ import { WalletAdapterNetwork } from '@solana/wallet-adapter-base'
 import { getPhantomWallet } from '@solana/wallet-adapter-wallets'
 import { clusterApiUrl } from '@solana/web3.js'
 
-import { Flex, Sidebar, Card } from 'components'
-import Logo from './logo.svg'
-import Wallet from './wallet'
+import Flex from './components/Flex'
+import Sidebar from './components/Sidebar'
+import Card from './components/Card'
 import LotteryButton from './components/LotteryButton'
 import TransferButton from './components/TransferButton'
+import Logo from './logo.svg'
+import Wallet from './wallet'
 
 function App() {
   const network = WalletAdapterNetwork.Devnet

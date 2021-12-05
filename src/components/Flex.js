@@ -1,3 +1,5 @@
+import React, { forwardRef } from 'react'
+
 import styled from 'styled-components'
 import { compose } from 'styled-system'
 
@@ -14,4 +16,8 @@ const BasicFlex = styled.div.withConfig(shouldForwardPropConfig)`
   display: ${({ display }) => (display ? display : 'flex')};
 `
 
-export { BasicFlex }
+const Flex = ({ display = 'flex', ...restProps }, ref) => {
+  return <BasicFlex ref={ref} display={display} {...restProps} />
+}
+
+export default forwardRef(Flex)

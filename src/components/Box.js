@@ -1,6 +1,6 @@
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import { compose, system } from 'styled-system'
-
 import {
   allBasicSystems,
   backgroundImage,
@@ -20,5 +20,8 @@ const BasicBox = styled.div.withConfig(shouldForwardPropConfig)`
     })
   )}
 `
+const Box = ({ display = 'block', ...restProps }, ref) => {
+  return <BasicBox ref={ref} display={display} {...restProps} />
+}
 
-export { BasicBox }
+export default forwardRef(Box)
