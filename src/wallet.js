@@ -1,53 +1,32 @@
-import React, { useMemo } from 'react'
-import { ConnectionProvider, WalletProvider, useWallet } from '@solana/wallet-adapter-react'
-import { WalletAdapterNetwork } from '@solana/wallet-adapter-base'
-import {
-  getLedgerWallet,
-  getPhantomWallet,
-  getSlopeWallet,
-  getSolflareWallet,
-  getSolletExtensionWallet,
-  getSolletWallet,
-  getTorusWallet,
-} from '@solana/wallet-adapter-wallets'
+import { useState, useEffect } from 'react'
+import { useConnection, useWallet } from '@solana/wallet-adapter-react'
 import { WalletModalProvider, WalletMultiButton } from '@solana/wallet-adapter-react-ui'
-import { clusterApiUrl } from '@solana/web3.js'
+import { Connection, LAMPORTS_PER_SOL } from '@solana/web3.js'
 
 // Default styles that can be overridden by your app
 require('@solana/wallet-adapter-react-ui/styles.css')
 
+const connection = new Connection('https://api.devnet.solana.com')
+
 const Wallet = () => {
-  // Can be set to 'devnet', 'testnet', or 'mainnet-beta'
-  const network = WalletAdapterNetwork.Devnet
+  const [solBalance, setSolBalance] = useState()
+  const { publicKey } = useWallet()
 
-  // You can also provide a custom RPC endpoint
-  const endpoint = useMemo(() => clusterApiUrl(network), [network])
+  console.log('aaaaa', 'walllet', publicKey)
 
-  // @solana/wallet-adapter-wallets includes all the adapters but supports tree shaking --
-  // Only the wallets you configure here will be compiled into your application
-  const wallets = useMemo(
-    () => [
-      getPhantomWallet(),
-      getSlopeWallet(),
-      getSolflareWallet(),
-      getTorusWallet({
-        options: { clientId: 'Get a client ID @ https://developer.tor.us' },
-      }),
-      getLedgerWallet(),
-      getSolletWallet({ network }),
-      getSolletExtensionWallet({ network }),
-    ],
-    [network]
-  )
+  useEffect(() => {
+    async function fetchSolBalance() {
+      setSolBalance((await connection.getBalance(publicKey)) / LAMPORTS_PER_SOL)
+    }
+
+    if (publicKey) fetchSolBalance()
+  }, [publicKey])
 
   return (
-    <ConnectionProvider endpoint={endpoint}>
-      <WalletProvider wallets={wallets} autoConnect>
-        <WalletModalProvider>
-          <WalletMultiButton />
-        </WalletModalProvider>
-      </WalletProvider>
-    </ConnectionProvider>
+    <WalletModalProvider>
+      <span>{solBalance && `${solBalance} SOL`}</span>
+      <WalletMultiButton />
+    </WalletModalProvider>
   )
 }
 
