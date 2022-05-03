@@ -1,9 +1,10 @@
+import { useCallback } from 'react'
 import { WalletNotConnectedError } from '@solana/wallet-adapter-base'
 import { useConnection, useWallet } from '@solana/wallet-adapter-react'
 import { Keypair, SystemProgram, Transaction } from '@solana/web3.js'
-import { useCallback } from 'react'
 
-const RPC_URL = 'https://api.devnet.solana.com'
+import { RPC_URL } from '../constants'
+import Button from './Button'
 
 const TransferButton = () => {
   const { connection } = useConnection()
@@ -16,7 +17,7 @@ const TransferButton = () => {
       SystemProgram.transfer({
         fromPubkey: publicKey,
         toPubkey: Keypair.generate().publicKey, // random wallet
-        lamports: 1e5, // 1 SOL
+        lamports: 1e5, // 0.0001 SOL
       })
     )
 
@@ -26,9 +27,9 @@ const TransferButton = () => {
   }, [publicKey, sendTransaction, connection])
 
   return (
-    <button onClick={onClick} disabled={!publicKey}>
+    <Button width="300px" onClick={onClick} disabled={!publicKey}>
       Transfer
-    </button>
+    </Button>
   )
 }
 export default TransferButton

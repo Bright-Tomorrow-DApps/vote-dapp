@@ -28,7 +28,7 @@ const Card = ({ id, topic, isFinished, isYesWin, yesOnClick, noOnClick }) => {
     <CardContainer>
       <Flex width="50%" borderRight="1px solid gray" alignItems="center">
         <Text color="white" fontSize="30px">
-          {topic}
+          #{id} {topic}
         </Text>
       </Flex>
       <Flex width="50%" flex-start="center" justifyContent="space-around" position="relative">

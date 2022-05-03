@@ -1,19 +1,36 @@
 import styled from 'styled-components'
+import {
+  compose,
+  color,
+  space,
+  typography,
+  layout,
+  background,
+  border,
+  position,
+  shadow,
+  variant,
+} from 'styled-system'
 
 const BasicButton = styled.button`
-  /* Adapt the colors based on primary prop */
-  background: ${(props) => (props.primary ? 'palevioletred' : 'white')};
-  color: ${(props) => (props.primary ? 'white' : 'palevioletred')};
+  ${compose(color, space, typography, layout, background, border, position, shadow)}
 
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid palevioletred;
+  margin: 5px;
+  font-size: 16px;
+  padding: 6px 12px;
+  border: 2px solid pink;
   border-radius: 3px;
+  cursor: pointer;
+  background: gray;
+  color: blue;
 `
 
-const Button = ({ children, onClick }) => {
-  return <BasicButton onClick={onClick}>{children}</BasicButton>
+const Button = ({ children, onClick, ...restProps }) => {
+  return (
+    <BasicButton onClick={onClick} {...restProps}>
+      {children}
+    </BasicButton>
+  )
 }
 
 export default Button

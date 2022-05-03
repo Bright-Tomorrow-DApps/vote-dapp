@@ -12,8 +12,6 @@ const Wallet = () => {
   const [solBalance, setSolBalance] = useState()
   const { publicKey } = useWallet()
 
-  console.log('aaaaa', 'walllet', publicKey)
-
   useEffect(() => {
     async function fetchSolBalance() {
       setSolBalance((await connection.getBalance(publicKey)) / LAMPORTS_PER_SOL)
